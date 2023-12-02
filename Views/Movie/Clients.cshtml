@@ -1,0 +1,29 @@
+﻿@model ASPCoreApplication2023.ViewModel.FilmClients
+<h2>@Model?.Movie?.Name</h2>
+
+@if (Model?.Customers?.Count > 1)
+{
+    <h3>Customers</h3>
+    @foreach (var item in Model?.Customers)
+    {
+        <h3>
+            <a asp-action="clients" asp-route-id="@item.Id">@item.Id : @item.Name</a>
+        </h3>
+    }
+
+}
+else if (Model?.Customers?.Count == 1)
+{
+    <h3>Customer</h3>
+    @foreach (var item in Model?.Customers)
+    {
+        <h3>
+            @item.Id : @item.Name
+        </h3>
+    }
+    <a asp-controller="movie" asp-action="clients" asp-route-id="">go back</a>
+}
+else
+{
+    <h3>No Customers</h3>
+}
